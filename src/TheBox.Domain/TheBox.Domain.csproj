@@ -6,4 +6,13 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Users\Entities\" />
+      <Folder Include="Users\Interfaces\" />
+      <Folder Include="WeightLossGoals\Entities\" />
+      <Folder Include="WeightLossGoals\Interfaces\" />
+      <Folder Include="Workouts\Entities\" />
+      <Folder Include="Workouts\Interfaces\" />
+    </ItemGroup>
+
 </Project>

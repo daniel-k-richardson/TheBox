@@ -6,4 +6,13 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Users\DatabaseContext\" />
+      <Folder Include="Users\Repositories\" />
+      <Folder Include="WeightLossGoals\DatabaseContext\" />
+      <Folder Include="WeightLossGoals\Repositories\" />
+      <Folder Include="Workouts\DatabaseContext\" />
+      <Folder Include="Workouts\Repositories\" />
+    </ItemGroup>
+
 </Project>
