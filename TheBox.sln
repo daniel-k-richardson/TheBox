@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBox.Domain", "src\TheBox.Domain\TheBox.Domain.csproj", "{C8E5F855-6E21-4648-A4D1-A8CC89DAADCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBox.Persistance", "src\TheBox.Persistance\TheBox.Persistance.csproj", "{29B52C36-A15E-4A1F-8963-816E4F520914}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBox.Persistence", "src\TheBox.Persistence\TheBox.Persistence.csproj", "{29B52C36-A15E-4A1F-8963-816E4F520914}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheBox.API", "src\TheBox.API\TheBox.API.csproj", "{22C0FC05-B56F-4F31-94A6-4C7ACB9B793B}"
 EndProject
