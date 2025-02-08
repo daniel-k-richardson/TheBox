@@ -16,4 +16,9 @@
       <Folder Include="Features\Workouts\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\TheBox.Domain\TheBox.Domain.csproj" />
+      <ProjectReference Include="..\TheBox.Persistence\TheBox.Persistence.csproj" />
+    </ItemGroup>
+
 </Project>
