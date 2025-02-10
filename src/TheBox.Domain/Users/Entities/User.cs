@@ -2,7 +2,7 @@ namespace TheBox.Domain.Users.Entities;
 
 public sealed class User
 {
-    public Guid UserId { get; }
+    public UserId Id { get; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
 
@@ -10,8 +10,8 @@ public sealed class User
     {
         AssertIsValidFirstName(firstName);
         AssertIsValidLastName(lastName);
-        
-        UserId = Guid.NewGuid();
+
+        Id = new UserId();
         FirstName = firstName;
         LastName = lastName;
     }
