@@ -7,19 +7,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="WeightLossGoals\DatabaseContext\" />
-      <Folder Include="WeightLossGoals\Repositories\" />
-      <Folder Include="Workouts\DatabaseContext\" />
-      <Folder Include="Workouts\Repositories\" />
+        <Folder Include="WeightLossGoals\DatabaseContext\"/>
+        <Folder Include="WeightLossGoals\Repositories\"/>
+        <Folder Include="Workouts\DatabaseContext\"/>
+        <Folder Include="Workouts\Repositories\"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
-      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.3"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TheBox.Domain\TheBox.Domain.csproj" />
+        <ProjectReference Include="..\TheBox.Domain\TheBox.Domain.csproj"/>
     </ItemGroup>
 
 </Project>

@@ -2,8 +2,6 @@ namespace TheBox.Domain.Shared.Entities;
 
 public abstract class GuidValueObject
 {
-    public Guid Value { get; }
-
     protected GuidValueObject(Guid value)
     {
         if (value == Guid.Empty)
@@ -12,13 +10,12 @@ public abstract class GuidValueObject
         Value = value;
     }
 
+    public Guid Value { get; }
+
     // Override equality methods
     public override bool Equals(object? obj)
     {
-        if (obj is GuidValueObject valueObject)
-        {
-            return Value == valueObject.Value;
-        }
+        if (obj is GuidValueObject valueObject) return Value == valueObject.Value;
         return false;
     }
 

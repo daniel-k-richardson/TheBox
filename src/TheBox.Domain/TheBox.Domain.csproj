@@ -7,10 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="WeightLossGoals\Entities\" />
-      <Folder Include="WeightLossGoals\Interfaces\" />
-      <Folder Include="Workouts\Entities\" />
-      <Folder Include="Workouts\Interfaces\" />
+        <Folder Include="WeightLossGoals\Entities\"/>
+        <Folder Include="WeightLossGoals\Interfaces\"/>
+        <Folder Include="Workouts\Entities\"/>
+        <Folder Include="Workouts\Interfaces\"/>
     </ItemGroup>
 
 </Project>

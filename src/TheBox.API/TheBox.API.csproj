@@ -7,26 +7,29 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="MediatR" Version="12.4.1"/>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.1">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Features\Users\" />
-      <Folder Include="Features\WeightLossGoals\" />
-      <Folder Include="Features\Workouts\" />
+        <Folder Include="Features\WeightLossGoals\"/>
+        <Folder Include="Features\Workouts\"/>
+        <Folder Include="Users\Features\AddUsers\"/>
+        <Folder Include="Users\Features\DeleteUser\"/>
+        <Folder Include="Users\Features\UpdateUser\"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\TheBox.Domain\TheBox.Domain.csproj" />
-      <ProjectReference Include="..\TheBox.Persistence\TheBox.Persistence.csproj" />
+        <ProjectReference Include="..\TheBox.Domain\TheBox.Domain.csproj"/>
+        <ProjectReference Include="..\TheBox.Persistence\TheBox.Persistence.csproj"/>
     </ItemGroup>
 
 </Project>
