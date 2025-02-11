@@ -19,6 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\src\TheBox.API\TheBox.API.csproj" />
         <ProjectReference Include="..\..\src\TheBox.Domain\TheBox.Domain.csproj"/>
     </ItemGroup>
 

@@ -3,7 +3,7 @@ using TheBox.Domain.Users.Entities;
 
 namespace TheBox.API.Features.Users.CreateUser;
 
-public sealed class CreateUserValidation : AbstractValidator<User>
+public sealed class CreateUserValidation : AbstractValidator<CreateUserCommand>
 {
     public CreateUserValidation()
     {
