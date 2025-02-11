@@ -4,7 +4,6 @@ namespace TheBox.UnitTests.Domain.Users;
 
 public sealed class UserTests
 {
-
     [Fact]
     public void CreateUser_ValidInputs_UserCreated()
     {
@@ -19,7 +18,7 @@ public sealed class UserTests
         Assert.Equal("John", firstName);
         Assert.Equal("Doe", lastName);
     }
-    
+
     [Fact]
     public void CreateUser_EmptyFirstName_ThrowsException()
     {
@@ -27,7 +26,7 @@ public sealed class UserTests
         var exception = Assert.Throws<ArgumentException>(() => new User("", "Doe"));
         Assert.Equal("First name cannot be empty.", exception.Message);
     }
-    
+
     [Fact]
     public void CreateUser_EmptyLastName_ThrowsException()
     {
@@ -35,7 +34,7 @@ public sealed class UserTests
         var exception = Assert.Throws<ArgumentException>(() => new User("John", ""));
         Assert.Equal("Last name cannot be empty.", exception.Message);
     }
-    
+
     [Fact]
     public void CreateUser_NullFirstName_ThrowsException()
     {
@@ -43,7 +42,7 @@ public sealed class UserTests
         var exception = Assert.Throws<ArgumentNullException>(() => new User(null!, "Doe"));
         Assert.Equal("Value cannot be null. (Parameter 'firstName')", exception.Message);
     }
-    
+
     [Fact]
     public void CreateUser_NullLastName_ThrowsException()
     {

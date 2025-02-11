@@ -1,5 +1,4 @@
 using FluentValidation;
-using TheBox.Domain.Users.Entities;
 
 namespace TheBox.API.Features.Users.CreateUser;
 

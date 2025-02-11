@@ -1,4 +1,6 @@
-﻿namespace TheBox.IntegrationTests;
+﻿using Xunit;
+
+namespace TheBox.IntegrationTests;
 
 public class UnitTest1
 {
