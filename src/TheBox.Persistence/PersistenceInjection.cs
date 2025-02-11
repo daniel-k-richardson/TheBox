@@ -13,7 +13,8 @@ public static class PersistenceInjection
     {
         services.AddDbContext<UserDbContext>(options =>
         {
-            options.UseNpgsql(configuration.GetConnectionString("UserConnection"));
+            options.UseNpgsql(configuration.GetConnectionString("UserConnection"),
+                b => b.MigrationsAssembly(typeof(UserDbContext).Assembly.FullName));
         });
 
         services.AddScoped<IUserRepository, UserRepository>();
