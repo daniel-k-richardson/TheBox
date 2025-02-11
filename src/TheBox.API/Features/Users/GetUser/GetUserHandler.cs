@@ -2,7 +2,7 @@ using MediatR;
 using TheBox.Domain.Users.Exceptions;
 using TheBox.Persistence.Users.DatabaseContext;
 
-namespace TheBox.API.Features.Users;
+namespace TheBox.API.Features.Users.GetUser;
 
 public sealed class GetUserHandler(UserDbContext userDbContext) : IRequestHandler<GetUserQuery, GetUserResult>
 {

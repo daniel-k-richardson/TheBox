@@ -1,4 +1,4 @@
-namespace TheBox.API.Interfaces;
+namespace TheBox.API.Configurations.Interfaces;
 
 public interface IEndpoint
 {

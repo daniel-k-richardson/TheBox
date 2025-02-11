@@ -1,9 +1,9 @@
 using MediatR;
-using TheBox.API.Interfaces;
+using TheBox.API.Configurations.Interfaces;
 using TheBox.Domain.Users.Entities;
 using TheBox.Domain.Users.Exceptions;
 
-namespace TheBox.API.Features.Users;
+namespace TheBox.API.Features.Users.GetUser;
 
 public sealed class GetUserEndpoint : IEndpoint
 {

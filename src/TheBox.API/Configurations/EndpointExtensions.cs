@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using TheBox.API.Interfaces;
+using TheBox.API.Configurations.Interfaces;
 
 namespace TheBox.API.Configurations;
 

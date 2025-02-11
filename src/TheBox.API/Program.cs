@@ -1,5 +1,5 @@
 using TheBox.API.Configurations;
-using TheBox.API.Interfaces;
+using TheBox.API.Configurations.Interfaces;
 using TheBox.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
