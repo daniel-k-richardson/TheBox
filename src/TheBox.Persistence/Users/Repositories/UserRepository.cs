@@ -7,9 +7,9 @@ namespace TheBox.Persistence.Users.Repositories;
 
 public sealed class UserRepository(UserDbContext userDbContext) : IUserRepository
 {
-    public async Task<User?> GetByIdAsync(Guid userId)
+    public async Task SaveChangesAsync(CancellationToken cancellationToken)
     {
-        return await userDbContext.Users.FindAsync(userId);
+        await userDbContext.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<User> AddAsync(User user)
@@ -27,7 +27,7 @@ public sealed class UserRepository(UserDbContext userDbContext) : IUserRepositor
 
     public async Task DeleteAsync(Guid userId)
     {
-        var user = await GetByIdAsync(userId);
+        var user = await userDbContext.Users.FindAsync(userId);
         if (user is null) throw new UserNotFoundException("User not found.");
 
         userDbContext.Users.Remove(user);
