@@ -18,7 +18,6 @@ public class CreateUserValidationTest
         Assert.True(result.IsValid);
     }
     
-
     [Fact]
     public void Validate_WhenFirstNameIsEmpty_ShouldReturnError()
     {
