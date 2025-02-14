@@ -6,7 +6,7 @@ using Testcontainers.PostgreSql;
 using TheBox.Persistence.Users.DatabaseContext;
 using Xunit;
 
-namespace TheBox.IntegrationTests.API.Features;
+namespace TheBox.IntegrationTests;
 
 public class FeaturesWebApplicationFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
@@ -16,6 +16,15 @@ public class FeaturesWebApplicationFactory : WebApplicationFactory<Program>, IAs
         .WithUsername("postgres")
         .WithPassword("Strong_password_123!")
         .Build();
+
+    public Task InitializeAsync()
+    {
+        return this._postgreSqlContainer.StartAsync();
+    }
+    public new Task DisposeAsync()
+    {
+        return this._postgreSqlContainer.StopAsync();
+    }
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
@@ -33,7 +42,7 @@ public class FeaturesWebApplicationFactory : WebApplicationFactory<Program>, IAs
             // Use the PostgreSQL container for the database
             services.AddDbContext<UserDbContext>(options =>
             {
-                options.UseNpgsql(_postgreSqlContainer.GetConnectionString());
+                options.UseNpgsql(this._postgreSqlContainer.GetConnectionString());
             });
 
             // Seed the database with test data
@@ -41,27 +50,5 @@ public class FeaturesWebApplicationFactory : WebApplicationFactory<Program>, IAs
             var db = scope.ServiceProvider.GetRequiredService<UserDbContext>();
             db.Database.EnsureCreated();
         });
-    }
-
-    private static async Task<PostgreSqlContainer> CreatePostgreSqlContainer()
-    {
-        var container = new PostgreSqlBuilder()
-            .WithImage("postgres:latest")
-            .WithDatabase("TestDb")
-            .WithUsername("postgres")
-            .WithPassword("Strong_password_123!")
-            .Build();
-
-        await container.StartAsync();
-        return container;
-    }
-
-    public Task InitializeAsync()
-    {
-        return this._postgreSqlContainer.StartAsync();
-    }
-    public new Task DisposeAsync()
-    {
-        return this._postgreSqlContainer.StopAsync();
     }
 }

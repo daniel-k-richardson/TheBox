@@ -16,6 +16,7 @@ public sealed class UserRepository(UserDbContext userDbContext) : IUserRepositor
     {
         await userDbContext.Users.AddAsync(user);
         await userDbContext.SaveChangesAsync();
+
         return user;
     }
 
@@ -28,7 +29,10 @@ public sealed class UserRepository(UserDbContext userDbContext) : IUserRepositor
     public async Task DeleteAsync(Guid userId)
     {
         var user = await userDbContext.Users.FindAsync(userId);
-        if (user is null) throw new UserNotFoundException("User not found.");
+        if (user is null)
+        {
+            throw new UserNotFoundException("User not found.");
+        }
 
         userDbContext.Users.Remove(user);
         await userDbContext.SaveChangesAsync();

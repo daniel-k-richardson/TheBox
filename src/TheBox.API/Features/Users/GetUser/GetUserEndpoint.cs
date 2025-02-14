@@ -18,6 +18,7 @@ public sealed class GetUserEndpoint : IEndpoint
             try
             {
                 var response = await mediator.Send(query, cancellationToken);
+
                 return Results.Ok(response);
             }
             catch (UserNotFoundException e)

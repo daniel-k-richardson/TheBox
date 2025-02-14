@@ -7,9 +7,9 @@ public sealed class User
         AssertIsValidFirstName(firstName);
         AssertIsValidLastName(lastName);
 
-        Id = new UserId();
-        FirstName = firstName;
-        LastName = lastName;
+        this.Id = new UserId();
+        this.FirstName = firstName;
+        this.LastName = lastName;
     }
 
     public UserId Id { get; }
@@ -19,22 +19,28 @@ public sealed class User
     public void SetFirstName(string firstName, string lastName)
     {
         AssertIsValidFirstName(firstName);
-        FirstName = firstName;
+        this.FirstName = firstName;
     }
 
     public void SetLastName(string lastName)
     {
         AssertIsValidLastName(lastName);
-        LastName = lastName;
+        this.LastName = lastName;
     }
 
-    private static void AssertIsValidFirstName(string firstName)
+    static void AssertIsValidFirstName(string firstName)
     {
-        if (string.IsNullOrWhiteSpace(firstName)) throw new ArgumentException("FirstName cannot be empty.");
+        if (string.IsNullOrWhiteSpace(firstName))
+        {
+            throw new ArgumentException("FirstName cannot be empty.");
+        }
     }
 
-    private static void AssertIsValidLastName(string lastName)
+    static void AssertIsValidLastName(string lastName)
     {
-        if (string.IsNullOrWhiteSpace(lastName)) throw new ArgumentException("LastName cannot be empty.");
+        if (string.IsNullOrWhiteSpace(lastName))
+        {
+            throw new ArgumentException("LastName cannot be empty.");
+        }
     }
 }

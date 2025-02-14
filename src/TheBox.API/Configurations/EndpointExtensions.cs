@@ -5,7 +5,7 @@ namespace TheBox.API.Configurations;
 
 public static class EndpointExtensions
 {
-    public static IServiceCollection AddEndpoints(this IServiceCollection services)
+    public static void AddEndpoints(this IServiceCollection services)
     {
         var assembly = typeof(Program).Assembly;
         var serviceDescriptors = assembly
@@ -13,6 +13,5 @@ public static class EndpointExtensions
             .Where(type => type is { IsAbstract: false, IsInterface: false } && type.IsAssignableTo(typeof(IEndpoint)))
             .Select(type => ServiceDescriptor.Transient(typeof(IEndpoint), type));
         services.TryAddEnumerable(serviceDescriptors);
-        return services;
     }
 }

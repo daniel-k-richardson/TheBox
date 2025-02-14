@@ -6,10 +6,10 @@ public sealed class CreateUserValidation : AbstractValidator<CreateUserCommand>
 {
     public CreateUserValidation()
     {
-        RuleFor(user => user.FirstName)
+        this.RuleFor(user => user.FirstName)
             .NotEmpty();
 
-        RuleFor(user => user.LastName)
+        this.RuleFor(user => user.LastName)
             .NotEmpty();
     }
 }
