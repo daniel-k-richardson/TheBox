@@ -23,3 +23,6 @@ var endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
 foreach (var endpoint in endpoints) endpoint.DefineEndpoints(app);
 
 app.Run();
+
+
+public partial class Program;

@@ -6,16 +6,11 @@ using Xunit;
 
 namespace TheBox.IntegrationTests.API.Features.Users.CreateUser;
 
-public class CreateUserTests : IClassFixture<FeaturesWebApplicationFactory<Program>>
+public class CreateUserTests(FeaturesWebApplicationFactory factory) : IClassFixture<FeaturesWebApplicationFactory>
 {
     
-    private readonly HttpClient _client;
+    readonly HttpClient _client = factory.CreateClient();
 
-    public CreateUserTests(FeaturesWebApplicationFactory<Program> factory)
-    {
-        _client = factory.CreateClient();
-    }
-    
     [Fact]
     public async Task CreateUser_WhenFirstNameAndLastNameAreNotEmpty_ShouldReturnSuccess()
     {

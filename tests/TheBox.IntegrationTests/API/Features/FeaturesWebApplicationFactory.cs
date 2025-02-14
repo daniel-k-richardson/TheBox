@@ -4,22 +4,32 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.PostgreSql;
 using TheBox.Persistence.Users.DatabaseContext;
+using Xunit;
 
 namespace TheBox.IntegrationTests.API.Features;
 
-public class FeaturesWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
+public class FeaturesWebApplicationFactory : WebApplicationFactory<Program>, IAsyncLifetime
 {
-    private static readonly PostgreSqlContainer _postgreSqlContainer;
-
-    static FeaturesWebApplicationFactory()
-    {
-        _postgreSqlContainer = CreatePostgreSqlContainer().Result;
-    }
+    readonly PostgreSqlContainer _postgreSqlContainer = new PostgreSqlBuilder()
+        .WithImage("postgres:latest")
+        .WithDatabase("TestDb")
+        .WithUsername("postgres")
+        .WithPassword("Strong_password_123!")
+        .Build();
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.ConfigureServices(services =>
         {
+            var descriptor = services.SingleOrDefault(
+                d => d.ServiceType ==
+                     typeof(DbContextOptions<UserDbContext>));
+
+            if (descriptor != null)
+            {
+                services.Remove(descriptor);
+            }
+
             // Use the PostgreSQL container for the database
             services.AddDbContext<UserDbContext>(options =>
             {
@@ -46,4 +56,12 @@ public class FeaturesWebApplicationFactory<TStartup> : WebApplicationFactory<TSt
         return container;
     }
 
+    public Task InitializeAsync()
+    {
+        return this._postgreSqlContainer.StartAsync();
+    }
+    public new Task DisposeAsync()
+    {
+        return this._postgreSqlContainer.StopAsync();
+    }
 }
