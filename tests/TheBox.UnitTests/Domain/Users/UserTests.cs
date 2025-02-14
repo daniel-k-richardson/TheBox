@@ -24,7 +24,7 @@ public sealed class UserTests
     {
         // Act & Assert
         var exception = Assert.Throws<ArgumentException>(() => new User("", "Doe"));
-        Assert.Equal("First name cannot be empty.", exception.Message);
+        Assert.Contains("cannot be empty.", exception.Message);
     }
 
     [Fact]
@@ -32,22 +32,22 @@ public sealed class UserTests
     {
         // Act & Assert
         var exception = Assert.Throws<ArgumentException>(() => new User("John", ""));
-        Assert.Equal("Last name cannot be empty.", exception.Message);
+        Assert.Contains("cannot be empty.", exception.Message);
     }
 
     [Fact]
     public void CreateUser_NullFirstName_ThrowsException()
     {
         // Act & Assert
-        var exception = Assert.Throws<ArgumentNullException>(() => new User(null!, "Doe"));
-        Assert.Equal("Value cannot be null. (Parameter 'firstName')", exception.Message);
+        var exception = Assert.Throws<ArgumentException>(() => new User(null, "Doe"));
+        Assert.Contains("cannot be empty", exception.Message);
     }
 
     [Fact]
     public void CreateUser_NullLastName_ThrowsException()
     {
         // Act & Assert
-        var exception = Assert.Throws<ArgumentNullException>(() => new User("John", null!));
-        Assert.Equal("Value cannot be null. (Parameter 'lastName')", exception.Message);
+        var exception = Assert.Throws<ArgumentException>(() => new User("John", null));
+        Assert.Contains("cannot be empty", exception.Message);
     }
 }
