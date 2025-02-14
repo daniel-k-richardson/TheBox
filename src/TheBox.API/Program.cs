@@ -2,6 +2,7 @@ using FluentValidation;
 using TheBox.API.Configurations;
 using TheBox.API.Configurations.Interfaces;
 using TheBox.Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly, includeInternalTypes: true);
