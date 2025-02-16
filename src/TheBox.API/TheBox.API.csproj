@@ -24,9 +24,6 @@
     <ItemGroup>
         <Folder Include="Features\WeightLossGoals\"/>
         <Folder Include="Features\Workouts\"/>
-        <Folder Include="Users\Features\AddUsers\"/>
-        <Folder Include="Users\Features\DeleteUser\"/>
-        <Folder Include="Users\Features\UpdateUser\"/>
     </ItemGroup>
 
     <ItemGroup>

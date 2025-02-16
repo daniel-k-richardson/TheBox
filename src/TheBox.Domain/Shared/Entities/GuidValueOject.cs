@@ -9,7 +9,7 @@ public abstract class GuidValueObject
             throw new ArgumentException("Value cannot be default", nameof(value));
         }
 
-        this.Value = value;
+        Value = value;
     }
 
     public Guid Value { get; }
@@ -19,7 +19,7 @@ public abstract class GuidValueObject
     {
         if (obj is GuidValueObject valueObject)
         {
-            return this.Value == valueObject.Value;
+            return Value == valueObject.Value;
         }
 
         return false;
@@ -27,6 +27,6 @@ public abstract class GuidValueObject
 
     public override int GetHashCode()
     {
-        return this.Value.GetHashCode();
+        return Value.GetHashCode();
     }
 }

@@ -4,8 +4,8 @@ namespace TheBox.Domain.Users.Interfaces;
 
 public interface IUserRepository
 {
-    Task SaveChangesAsync(CancellationToken cancellationToken);
+    Task SaveChangesAsync(CancellationToken cancellationToken = default);
     Task<User> AddAsync(User user);
     Task UpdateAsync(User user);
-    Task DeleteAsync(Guid userId);
+    Task DeleteAsync(UserId id);
 }

@@ -13,7 +13,7 @@ public class CreateUserValidationTest
         var user = new CreateUserCommand("john", "doe");
 
         // Act
-        var result = this._validator.Validate(user);
+        var result = _validator.Validate(user);
 
         // Assert
         Assert.True(result.IsValid);
@@ -26,7 +26,7 @@ public class CreateUserValidationTest
         var user = new CreateUserCommand("", "doe");
 
         // Act
-        var result = this._validator.Validate(user);
+        var result = _validator.Validate(user);
 
         // Assert
         Assert.False(result.IsValid);
@@ -40,7 +40,7 @@ public class CreateUserValidationTest
         var user = new CreateUserCommand("john", "");
 
         // Act
-        var result = this._validator.Validate(user);
+        var result = _validator.Validate(user);
 
         // Assert
         Assert.False(result.IsValid);

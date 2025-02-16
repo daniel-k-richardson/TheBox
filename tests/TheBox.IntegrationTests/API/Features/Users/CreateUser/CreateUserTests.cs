@@ -8,9 +8,9 @@ using Xunit;
 
 namespace TheBox.IntegrationTests.API.Features.Users.CreateUser;
 
-public class CreateUserTests(FeaturesWebApplicationFactory factory) : BaseIntegrationTest(factory)
+public class CreateUserTests : BaseIntegrationTest
 {
-
+    
     [Fact]
     public async Task CreateUser_WhenFirstNameAndLastNameAreNotEmpty_ShouldReturnSuccess()
     {
@@ -19,35 +19,39 @@ public class CreateUserTests(FeaturesWebApplicationFactory factory) : BaseIntegr
         var content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
         // Act
-        var response = await this._client.PostAsync("/api/users", content);
+        var response = await Client.PostAsync("/api/users", content);
 
         // Assert
-        response.EnsureSuccessStatusCode();
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
         // verify the user was created
-        var createdUser = await this._userDbContext.Users.SingleAsync();
+        var createdUser = await UserDbContext.Users.SingleAsync();
         Assert.Equal(user.FirstName, createdUser.FirstName);
         Assert.Equal(user.LastName, createdUser.LastName);
     }
 
+    // check validation is properly setup
     [Fact]
     public async Task CreateUser_WhenFirstNameIsEmpty_ShouldReturnValidationError()
     {
         // Arrange
-        var user = GetValidCreateUserCommand(string.Empty);
+        var user = GetValidCreateUserCommand() with { FirstName = "" };
         var content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
         // Act
-        var response = await this._client.PostAsync("/api/users", content);
-        var result = await response.Content.ReadFromJsonAsync<Dictionary<string, string[]>>();
-
+        var response = await Client.PostAsync("/api/users", content);
+        
         // Assert
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        
+        // verify the response contains the validation error
+        var result = await response.Content.ReadFromJsonAsync<Dictionary<string, string[]>>();
+        Assert.NotNull(result);
         Assert.Contains("FirstName", result.Keys);
         Assert.Contains("must not be empty", result["FirstName"].Single());
 
         // verify the user was not created
-        Assert.Empty(await _userDbContext.Users.ToListAsync());
+        Assert.Empty(await UserDbContext.Users.ToListAsync());
     }
 
     static CreateUserCommand GetValidCreateUserCommand(string firstName = "john", string lastName = "doe")

@@ -7,25 +7,25 @@ public sealed class User
         AssertIsValidFirstName(firstName);
         AssertIsValidLastName(lastName);
 
-        this.Id = new UserId();
-        this.FirstName = firstName;
-        this.LastName = lastName;
+        Id = new UserId();
+        FirstName = firstName;
+        LastName = lastName;
     }
 
     public UserId Id { get; }
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
 
-    public void SetFirstName(string firstName, string lastName)
+    public void SetFirstName(string firstName)
     {
         AssertIsValidFirstName(firstName);
-        this.FirstName = firstName;
+        FirstName = firstName;
     }
 
     public void SetLastName(string lastName)
     {
         AssertIsValidLastName(lastName);
-        this.LastName = lastName;
+        LastName = lastName;
     }
 
     static void AssertIsValidFirstName(string firstName)
