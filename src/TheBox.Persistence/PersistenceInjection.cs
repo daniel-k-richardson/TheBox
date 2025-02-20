@@ -1,9 +1,11 @@
+#region
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TheBox.Domain.Users.Interfaces;
 using TheBox.Persistence.Users.DatabaseContext;
 using TheBox.Persistence.Users.Repositories;
+#endregion
 
 namespace TheBox.Persistence;
 

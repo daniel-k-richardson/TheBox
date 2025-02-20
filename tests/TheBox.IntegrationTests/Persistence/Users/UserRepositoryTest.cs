@@ -1,31 +1,30 @@
+#region
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using TheBox.Domain.Users.Entities;
 using TheBox.Domain.Users.Exceptions;
 using TheBox.Domain.Users.Interfaces;
+using TheBox.TestUtils.ObjectMothers;
 using Xunit;
+#endregion
 
 namespace TheBox.IntegrationTests.Persistence.Users;
 
 public class UserRepositoryTest : BaseIntegrationTest
 {
-    private IUserRepository _userRepository;
-    public UserRepositoryTest() : base() 
-    {
-        
-    }
-    
+    IUserRepository _userRepository = null!;
+
     public override async Task InitializeAsync()
     {
         await base.InitializeAsync();
         _userRepository = ServiceScope.ServiceProvider.GetRequiredService<IUserRepository>();
     }
-    
+
     [Fact]
     public async Task AddUser_WithValidInputs_SavesSuccessfully()
     {
         // Arrange
-        var user = new User("John", "Doe");
+        var user = UserMother.Create();
 
         // Act
         await _userRepository.AddAsync(user);
@@ -41,7 +40,7 @@ public class UserRepositoryTest : BaseIntegrationTest
     public async Task UpdateUser_WithInputs_UpdatedSuccessfully()
     {
         // Arrange
-        var user = new User("John", "Doe");
+        var user = UserMother.Create();
         await _userRepository.AddAsync(user);
         await _userRepository.SaveChangesAsync();
 
@@ -55,12 +54,12 @@ public class UserRepositoryTest : BaseIntegrationTest
         Assert.Equal(user.FirstName, updatedUser.FirstName);
         Assert.Equal(user.LastName, updatedUser.LastName);
     }
-    
+
     [Fact]
     public async Task DeleteUser_WithValidId_DeletedSuccessfully()
     {
         // Arrange
-        var user = new User("John", "Doe");
+        var user = UserMother.Create();
         await _userRepository.AddAsync(user);
         await _userRepository.SaveChangesAsync();
 
@@ -71,7 +70,7 @@ public class UserRepositoryTest : BaseIntegrationTest
         var deletedUser = await UserDbContext.Users.FindAsync(user.Id);
         Assert.Null(deletedUser);
     }
-    
+
     [Fact]
     public async Task DeleteUser_WithInvalidId_UserNotFound()
     {
@@ -79,6 +78,6 @@ public class UserRepositoryTest : BaseIntegrationTest
         var userId = new UserId();
 
         // Act and assert
-        await Assert.ThrowsAsync<UserNotFoundException>(async () =>  await _userRepository.DeleteAsync(userId));
+        await Assert.ThrowsAsync<UserNotFoundException>(async () => await _userRepository.DeleteAsync(userId));
     }
 }

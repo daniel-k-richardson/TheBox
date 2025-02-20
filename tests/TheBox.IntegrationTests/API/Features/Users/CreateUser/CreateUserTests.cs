@@ -1,3 +1,4 @@
+#region
 using System.Net;
 using System.Net.Http.Json;
 using System.Text;
@@ -5,12 +6,13 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using TheBox.API.Features.Users.CreateUser;
 using Xunit;
+#endregion
 
 namespace TheBox.IntegrationTests.API.Features.Users.CreateUser;
 
 public class CreateUserTests : BaseIntegrationTest
 {
-    
+
     [Fact]
     public async Task CreateUser_WhenFirstNameAndLastNameAreNotEmpty_ShouldReturnSuccess()
     {
@@ -40,10 +42,10 @@ public class CreateUserTests : BaseIntegrationTest
 
         // Act
         var response = await Client.PostAsync("/api/users", content);
-        
+
         // Assert
         Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
-        
+
         // verify the response contains the validation error
         var result = await response.Content.ReadFromJsonAsync<Dictionary<string, string[]>>();
         Assert.NotNull(result);

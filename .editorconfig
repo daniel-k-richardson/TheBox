@@ -1,0 +1,36 @@
+# Root EditorConfig file
+root = true
+
+# C# files
+[*.cs]
+# Indentation and spacing
+indent_style = space
+indent_size = 4
+tab_width = 4
+
+# New line preferences
+end_of_line = crlf
+insert_final_newline = true
+
+# Organize usings
+dotnet_separate_import_directive_groups = false
+dotnet_sort_system_directives_first = true
+
+# File header template
+file_header_template = unset
+
+# Naming conventions
+dotnet_naming_rule.interface_should_be_prefixed_with_i.severity = suggestion
+dotnet_naming_rule.interface_should_be_prefixed_with_i.symbols = interface
+dotnet_naming_rule.interface_should_be_prefixed_with_i.style = prefix_i
+dotnet_naming_symbols.interface.applicable_kinds = interface
+dotnet_naming_symbols.interface.applicable_accessibilities = *
+dotnet_naming_symbols.interface.required_modifiers = *
+dotnet_naming_style.prefix_i.required_prefix = I
+dotnet_naming_style.prefix_i.capitalization = pascal_case
+
+# Suggest removing 'this.' for member access
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_property = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
+dotnet_style_qualification_for_event = false:suggestion

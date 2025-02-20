@@ -1,4 +1,6 @@
+#region
 using FluentValidation;
+#endregion
 
 namespace TheBox.API.Features.Users.CreateUser;
 

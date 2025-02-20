@@ -1,7 +1,9 @@
+#region
 using TheBox.Domain.Users.Entities;
 using TheBox.Domain.Users.Exceptions;
 using TheBox.Domain.Users.Interfaces;
 using TheBox.Persistence.Users.DatabaseContext;
+#endregion
 
 namespace TheBox.Persistence.Users.Repositories;
 

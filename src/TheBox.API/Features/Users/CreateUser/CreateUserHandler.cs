@@ -1,6 +1,8 @@
+#region
 using MediatR;
 using TheBox.Domain.Users.Entities;
 using TheBox.Domain.Users.Interfaces;
+#endregion
 
 namespace TheBox.API.Features.Users.CreateUser;
 

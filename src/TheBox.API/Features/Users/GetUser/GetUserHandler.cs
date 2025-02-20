@@ -1,6 +1,8 @@
+#region
 using MediatR;
 using TheBox.Domain.Users.Exceptions;
 using TheBox.Persistence.Users.DatabaseContext;
+#endregion
 
 namespace TheBox.API.Features.Users.GetUser;
 

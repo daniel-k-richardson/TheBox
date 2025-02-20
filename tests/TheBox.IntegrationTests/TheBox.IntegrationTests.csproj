@@ -20,6 +20,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\src\TheBox.API\TheBox.API.csproj"/>
         <ProjectReference Include="..\..\src\TheBox.Persistence\TheBox.Persistence.csproj"/>
+        <ProjectReference Include="..\TheBox.TestUtils\TheBox.TestUtils.csproj"/>
     </ItemGroup>
 
 </Project>

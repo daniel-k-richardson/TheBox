@@ -1,4 +1,6 @@
+#region
 using TheBox.Domain.Users.Entities;
+#endregion
 
 namespace TheBox.Domain.Users.Interfaces;
 

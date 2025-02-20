@@ -1,5 +1,7 @@
+#region
 using Microsoft.EntityFrameworkCore;
 using TheBox.Domain.Users.Entities;
+#endregion
 
 namespace TheBox.Persistence.Users.DatabaseContext;
 

@@ -1,7 +1,9 @@
+#region
 using FluentValidation;
 using TheBox.API.Configurations;
 using TheBox.API.Configurations.Interfaces;
 using TheBox.Persistence;
+#endregion
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));

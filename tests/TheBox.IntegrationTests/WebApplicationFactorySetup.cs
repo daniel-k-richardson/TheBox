@@ -1,22 +1,23 @@
+#region
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.PostgreSql;
 using TheBox.Persistence.Users.DatabaseContext;
-using Xunit;
+#endregion
 
 namespace TheBox.IntegrationTests;
 
-public class FeaturesWebApplicationFactory : WebApplicationFactory<Program>
+public class WebApplicationFactorySetup : WebApplicationFactory<Program>
 {
-    private readonly PostgreSqlContainer _postgreSqlContainer;
+    readonly PostgreSqlContainer _postgreSqlContainer;
 
-    public FeaturesWebApplicationFactory(PostgreSqlContainer postgreSqlContainer)
+    public WebApplicationFactorySetup(PostgreSqlContainer postgreSqlContainer)
     {
         _postgreSqlContainer = postgreSqlContainer;
     }
-    
+
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.ConfigureServices(services =>

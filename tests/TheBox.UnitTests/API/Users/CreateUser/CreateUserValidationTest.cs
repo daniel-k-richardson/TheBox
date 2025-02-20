@@ -1,4 +1,6 @@
+#region
 using TheBox.API.Features.Users.CreateUser;
+#endregion
 
 namespace TheBox.UnitTests.API.Users.CreateUser;
 
