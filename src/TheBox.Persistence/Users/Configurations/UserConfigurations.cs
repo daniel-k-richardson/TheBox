@@ -1,8 +1,6 @@
-#region
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TheBox.Domain.Users.Entities;
-#endregion
 
 namespace TheBox.Persistence.Users.Configurations;
 

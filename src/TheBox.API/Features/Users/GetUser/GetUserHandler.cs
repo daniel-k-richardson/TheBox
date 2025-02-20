@@ -1,8 +1,6 @@
-#region
 using MediatR;
 using TheBox.Domain.Users.Exceptions;
 using TheBox.Persistence.Users.DatabaseContext;
-#endregion
 
 namespace TheBox.API.Features.Users.GetUser;
 
@@ -16,6 +14,6 @@ public sealed class GetUserHandler(UserDbContext userDbContext) : IRequestHandle
             throw new UserNotFoundException(request.Id.ToString()!);
         }
 
-        return new GetUserResult(user.Id, user.FirstName, user.LastName);
+        return new GetUserResult(user.Id.Value, user.FirstName, user.LastName);
     }
 }

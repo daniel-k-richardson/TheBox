@@ -1,7 +1,5 @@
-#region
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using TheBox.API.Configurations.Interfaces;
-#endregion
 
 namespace TheBox.API.Configurations;
 

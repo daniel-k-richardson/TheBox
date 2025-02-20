@@ -11,8 +11,13 @@ public static class UserMother
         return CreateBase();
     }
 
-    static User CreateBase()
+    public static List<User> CreateList(int count)
     {
-        return new User("John", "Doe");
+        return Enumerable.Range(0, count).Select(i => CreateBase($"John {i}", $"Doe {i}")).ToList();
+    }
+
+    static User CreateBase(string firstName = "John", string lastName = "Doe")
+    {
+        return new User(firstName, lastName);
     }
 }

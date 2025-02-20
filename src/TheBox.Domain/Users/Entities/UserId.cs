@@ -1,6 +1,4 @@
-#region
 using TheBox.Domain.Shared.Entities;
-#endregion
 
 namespace TheBox.Domain.Users.Entities;
 

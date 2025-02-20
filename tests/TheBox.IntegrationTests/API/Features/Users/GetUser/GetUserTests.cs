@@ -1,9 +1,8 @@
-#region
 using System.Net;
-using System.Text.Json;
-using TheBox.Domain.Users.Entities;
+using System.Net.Http.Json;
+using TheBox.API.Features.Users.GetUser;
+using TheBox.TestUtils.ObjectMothers;
 using Xunit;
-#endregion
 
 namespace TheBox.IntegrationTests.API.Features.Users.GetUser;
 
@@ -14,21 +13,20 @@ public class GetUserTests : BaseIntegrationTest
     public async Task GetUser_WithValidId_ReturnsUser()
     {
         // Arrange
-        var user = new User("John", "Doe");
+        var user = UserMother.Create();
         await UserDbContext.Users.AddAsync(user);
         await UserDbContext.SaveChangesAsync();
 
         // Act
         var response = await Client.GetAsync($"/api/users/{user.Id.Value}");
-        response.EnsureSuccessStatusCode();
-
-        var content = await response.Content.ReadAsStringAsync();
-        var userResponse = JsonSerializer.Deserialize<User>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        var getUserResult = await response.Content.ReadFromJsonAsync<GetUserResult>();
 
         // Assert
-        Assert.NotNull(userResponse);
-        Assert.Equal(user.FirstName, userResponse.FirstName);
-        Assert.Equal(user.LastName, userResponse.LastName);
+        Assert.NotNull(getUserResult);
+        Assert.Equal(user.Id.Value, getUserResult.UserId);
+        Assert.Equal(user.FirstName, getUserResult.FirstName);
+        Assert.Equal(user.LastName, getUserResult.LastName);
     }
 
     [Fact]

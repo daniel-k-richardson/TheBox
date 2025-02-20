@@ -1,8 +1,6 @@
-#region
 using FluentValidation;
 using MediatR;
 using TheBox.API.Configurations.Interfaces;
-#endregion
 
 namespace TheBox.API.Features.Users.CreateUser;
 

@@ -1,4 +1,3 @@
-#region
 using System.Net;
 using System.Net.Http.Json;
 using System.Text;
@@ -6,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using TheBox.API.Features.Users.CreateUser;
 using Xunit;
-#endregion
 
 namespace TheBox.IntegrationTests.API.Features.Users.CreateUser;
 
