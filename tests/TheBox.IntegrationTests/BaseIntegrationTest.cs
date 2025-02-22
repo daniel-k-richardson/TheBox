@@ -7,7 +7,7 @@ namespace TheBox.IntegrationTests;
 
 public abstract class BaseIntegrationTest : IAsyncLifetime
 {
-    #pragma warning disable SA1401 // Fields should be private
+#pragma warning disable SA1401 // Fields should be private
     protected HttpClient Client = null!;
     protected IServiceScope ServiceScope = null!;
     protected UserDbContext UserDbContext = null!;

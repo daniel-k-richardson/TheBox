@@ -15,7 +15,6 @@ public abstract class GuidValueObject
 
     public Guid Value { get; }
 
-    // Override equality methods
     public override bool Equals(object? obj)
     {
         if (obj is GuidValueObject valueObject)
@@ -30,4 +29,6 @@ public abstract class GuidValueObject
     {
         return Value.GetHashCode();
     }
+
+    // Override equality methods
 }

@@ -1,6 +1,6 @@
-namespace TheBox.Domain.Users.Entities;
-
 using TheBox.Domain.Shared.Entities;
+
+namespace TheBox.Domain.Users.Entities;
 
 public sealed class UserId : GuidValueObject
 {

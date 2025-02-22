@@ -9,22 +9,22 @@ public sealed class GetUserEndpoint : IEndpoint
 {
     public void DefineEndpoints(IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("/api/users/{id:guid}", async (
-            IMediator mediator,
-            Guid id,
-            CancellationToken cancellationToken) =>
-        {
-            var query = new GetUserQuery(new UserId(id));
-            try
+        endpoints.MapGet("/api/users/{id:guid}",
+            async (IMediator mediator,
+                Guid id,
+                CancellationToken cancellationToken) =>
             {
-                var response = await mediator.Send(query, cancellationToken);
+                var query = new GetUserQuery(new UserId(id));
+                try
+                {
+                    var response = await mediator.Send(query, cancellationToken);
 
-                return Results.Ok(response);
-            }
-            catch (UserNotFoundException)
-            {
-                return Results.NotFound("The user was not found");
-            }
-        });
+                    return Results.Ok(response);
+                }
+                catch (UserNotFoundException)
+                {
+                    return Results.NotFound("The user was not found");
+                }
+            });
     }
 }

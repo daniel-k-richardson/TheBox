@@ -20,9 +20,8 @@ public class WebApplicationFactorySetup : WebApplicationFactory<Program>
     {
         builder.ConfigureServices(services =>
         {
-            var descriptor = services.SingleOrDefault(
-                d => d.ServiceType ==
-                     typeof(DbContextOptions<UserDbContext>));
+            var descriptor = services.SingleOrDefault(d => d.ServiceType ==
+                                                           typeof(DbContextOptions<UserDbContext>));
 
             if (descriptor != null)
             {
