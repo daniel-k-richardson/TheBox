@@ -1,6 +1,4 @@
-#region
 using TheBox.Domain.Users.Entities;
-#endregion
 
 namespace TheBox.TestUtils.ObjectMothers;
 
@@ -16,7 +14,7 @@ public static class UserMother
         return Enumerable.Range(0, count).Select(i => CreateBase($"John {i}", $"Doe {i}")).ToList();
     }
 
-    static User CreateBase(string firstName = "John", string lastName = "Doe")
+    private static User CreateBase(string firstName = "John", string lastName = "Doe")
     {
         return new User(firstName, lastName);
     }

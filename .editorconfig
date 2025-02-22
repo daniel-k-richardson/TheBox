@@ -6,8 +6,22 @@ root = true
 # Indentation and spacing
 indent_style = space
 indent_size = 4
-tab_width = 4
-
+# Order of class members
+dotnet_diagnostic.SA1201.severity = warning
+dotnet_diagnostic.SA1202.severity = warning
+dotnet_diagnostic.SA1203.severity = warning
+dotnet_diagnostic.SA1204.severity = warning
+dotnet_diagnostic.SA1205.severity = warning
+dotnet_diagnostic.SA1206.severity = warning
+dotnet_diagnostic.SA1116.severity = none
+dotnet_diagnostic.SA1633.severity = none
+dotnet_diagnostic.SA1600.severity = none
+dotnet_diagnostic.SA1101.severity = none
+dotnet_diagnostic.SA0001.severity = none
+dotnet_diagnostic.SA1200.severity = none
+dotnet_diagnostic.SA1128.severity = none
+dotnet_diagnostic.SA1309.severity = none
+dotnet_diagnostic.SA1306.severity = none
 # New line preferences
 end_of_line = crlf
 insert_final_newline = true

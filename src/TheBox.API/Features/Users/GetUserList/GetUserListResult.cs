@@ -4,7 +4,6 @@ namespace TheBox.API.Features.Users.GetUserList;
 
 public class GetUserListResult
 {
-
     public GetUserListResult()
     {
     }
@@ -13,5 +12,6 @@ public class GetUserListResult
     {
         Users.AddRange(users);
     }
+
     public List<GetUserResult> Users { get; set; } = new();
 }

@@ -17,7 +17,7 @@ namespace TheBox.Persistence.Users.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     FirstName = table.Column<string>(type: "text", nullable: false),
-                    LastName = table.Column<string>(type: "text", nullable: false)
+                    LastName = table.Column<string>(type: "text", nullable: false),
                 },
                 constraints: table =>
                 {

@@ -1,5 +1,6 @@
 namespace TheBox.Domain.Shared.Entities;
 
+#pragma warning disable SA1649 // File name should match first type name
 public abstract class GuidValueObject
 {
     protected GuidValueObject(Guid value)

@@ -10,7 +10,6 @@ namespace TheBox.IntegrationTests.API.Features.Users.CreateUser;
 
 public class CreateUserTests : BaseIntegrationTest
 {
-
     [Fact]
     public async Task CreateUser_WhenFirstNameAndLastNameAreNotEmpty_ShouldReturnSuccess()
     {
@@ -35,7 +34,7 @@ public class CreateUserTests : BaseIntegrationTest
     public async Task CreateUser_WhenFirstNameIsEmpty_ShouldReturnValidationError()
     {
         // Arrange
-        var user = GetValidCreateUserCommand() with { FirstName = "" };
+        var user = GetValidCreateUserCommand() with { FirstName = string.Empty };
         var content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
         // Act
@@ -54,7 +53,7 @@ public class CreateUserTests : BaseIntegrationTest
         Assert.Empty(await UserDbContext.Users.ToListAsync());
     }
 
-    static CreateUserCommand GetValidCreateUserCommand(string firstName = "john", string lastName = "doe")
+    private static CreateUserCommand GetValidCreateUserCommand(string firstName = "john", string lastName = "doe")
     {
         return new CreateUserCommand(firstName, lastName);
     }

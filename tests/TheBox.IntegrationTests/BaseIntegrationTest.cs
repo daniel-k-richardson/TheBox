@@ -1,26 +1,17 @@
-#region
 using Microsoft.Extensions.DependencyInjection;
 using Testcontainers.PostgreSql;
 using TheBox.Persistence.Users.DatabaseContext;
 using Xunit;
-#endregion
 
 namespace TheBox.IntegrationTests;
 
 public abstract class BaseIntegrationTest : IAsyncLifetime
 {
-    readonly PostgreSqlContainer _container;
-    protected HttpClient Client;
-    protected IServiceScope ServiceScope;
-    protected UserDbContext UserDbContext;
-
-    protected BaseIntegrationTest()
-    {
-        _container = new PostgreSqlBuilder().Build();
-        ServiceScope = null!;
-        UserDbContext = null!;
-        Client = null!;
-    }
+    #pragma warning disable SA1401 // Fields should be private
+    protected HttpClient Client = null!;
+    protected IServiceScope ServiceScope = null!;
+    protected UserDbContext UserDbContext = null!;
+    private readonly PostgreSqlContainer _container = new PostgreSqlBuilder().Build();
 
     public virtual async Task InitializeAsync()
     {

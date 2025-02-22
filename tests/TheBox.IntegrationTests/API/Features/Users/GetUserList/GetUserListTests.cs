@@ -8,7 +8,6 @@ namespace TheBox.IntegrationTests.API.Features.Users.GetUserList;
 
 public class GetUserListTests : BaseIntegrationTest
 {
-
     [Fact]
     public async Task GetUserList__ReturnsUsers()
     {

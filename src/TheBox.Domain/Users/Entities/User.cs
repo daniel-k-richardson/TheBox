@@ -13,7 +13,9 @@ public sealed class User
     }
 
     public UserId Id { get; }
+
     public string FirstName { get; private set; }
+
     public string LastName { get; private set; }
 
     public void SetFirstName(string firstName)
@@ -28,7 +30,7 @@ public sealed class User
         LastName = lastName;
     }
 
-    static void AssertIsValidFirstName(string firstName)
+    private static void AssertIsValidFirstName(string firstName)
     {
         if (string.IsNullOrWhiteSpace(firstName))
         {
@@ -36,7 +38,7 @@ public sealed class User
         }
     }
 
-    static void AssertIsValidLastName(string lastName)
+    private static void AssertIsValidLastName(string lastName)
     {
         if (string.IsNullOrWhiteSpace(lastName))
         {

@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "orderingRules": {
+      "elementOrder": [
+        "property",
+        "constructor",
+        "method"
+      ]
+    }
+  }
+}

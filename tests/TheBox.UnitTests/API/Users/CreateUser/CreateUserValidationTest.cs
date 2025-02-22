@@ -1,12 +1,10 @@
-#region
 using TheBox.API.Features.Users.CreateUser;
-#endregion
 
 namespace TheBox.UnitTests.API.Users.CreateUser;
 
 public class CreateUserValidationTest
 {
-    readonly CreateUserValidation _validator = new();
+    private readonly CreateUserValidation validator = new();
 
     [Fact]
     public void Validate_WhenFirstNameAndLastNameAreNotEmpty_ShouldReturnSuccess()
@@ -15,7 +13,7 @@ public class CreateUserValidationTest
         var user = new CreateUserCommand("john", "doe");
 
         // Act
-        var result = _validator.Validate(user);
+        var result = validator.Validate(user);
 
         // Assert
         Assert.True(result.IsValid);
@@ -25,10 +23,10 @@ public class CreateUserValidationTest
     public void Validate_WhenFirstNameIsEmpty_ShouldReturnError()
     {
         // Arrange
-        var user = new CreateUserCommand("", "doe");
+        var user = new CreateUserCommand(string.Empty, "doe");
 
         // Act
-        var result = _validator.Validate(user);
+        var result = validator.Validate(user);
 
         // Assert
         Assert.False(result.IsValid);
@@ -39,10 +37,10 @@ public class CreateUserValidationTest
     public void Validate_WhenLastNameIsEmpty_ShouldReturnError()
     {
         // Arrange
-        var user = new CreateUserCommand("john", "");
+        var user = new CreateUserCommand("john", string.Empty);
 
         // Act
-        var result = _validator.Validate(user);
+        var result = validator.Validate(user);
 
         // Assert
         Assert.False(result.IsValid);

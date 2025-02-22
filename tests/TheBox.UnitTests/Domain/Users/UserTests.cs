@@ -1,6 +1,4 @@
-#region
 using TheBox.Domain.Users.Entities;
-#endregion
 
 namespace TheBox.UnitTests.Domain.Users;
 
@@ -25,7 +23,7 @@ public sealed class UserTests
     public void CreateUser_EmptyFirstName_ThrowsException()
     {
         // Act & Assert
-        var exception = Assert.Throws<ArgumentException>(() => new User("", "Doe"));
+        var exception = Assert.Throws<ArgumentException>(() => new User(string.Empty, "Doe"));
         Assert.Contains("cannot be empty.", exception.Message);
     }
 
@@ -33,7 +31,7 @@ public sealed class UserTests
     public void CreateUser_EmptyLastName_ThrowsException()
     {
         // Act & Assert
-        var exception = Assert.Throws<ArgumentException>(() => new User("John", ""));
+        var exception = Assert.Throws<ArgumentException>(() => new User("John", string.Empty));
         Assert.Contains("cannot be empty.", exception.Message);
     }
 }
