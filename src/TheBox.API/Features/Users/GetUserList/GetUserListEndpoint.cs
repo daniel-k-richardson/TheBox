@@ -7,7 +7,7 @@ public class GetUserListEndpoint : IEndpoint
 {
     public void DefineEndpoints(IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("/api/users",
+        endpoints.MapGet(ApiUserRoutes.GetUsers,
             async (IMediator mediator,
                 CancellationToken cancellationToken) =>
             {

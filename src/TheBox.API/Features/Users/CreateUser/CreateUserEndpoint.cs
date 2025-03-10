@@ -8,7 +8,7 @@ public class CreateUserEndpoint : IEndpoint
 {
     public void DefineEndpoints(IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapPost("api/users",
+        endpoints.MapPost(ApiUserRoutes.CreateUser,
             async (IMediator mediator, CreateUserCommand command, IValidator<CreateUserCommand> validator) =>
             {
                 var validationResult = await validator.ValidateAsync(command);

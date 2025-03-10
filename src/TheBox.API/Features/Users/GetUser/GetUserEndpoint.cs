@@ -9,7 +9,7 @@ public sealed class GetUserEndpoint : IEndpoint
 {
     public void DefineEndpoints(IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("/api/users/{id:guid}",
+        endpoints.MapGet(ApiUserRoutes.GetUser,
             async (IMediator mediator,
                 Guid id,
                 CancellationToken cancellationToken) =>
